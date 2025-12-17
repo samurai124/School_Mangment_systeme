@@ -102,30 +102,74 @@
                 <h4 class="m-0">Details : <span>Date</span></h4>
             </div>
             <div class="d-flex flex-column gap-2">
-                <div class="d-flex flex-row justify-content-between">
-                    <div class="d-flex flex-row">
-                        <div class="bg-secondary p-2 rounded">
-                            <i class="fa-solid fa-user fs-1"></i>
+                <div class="d-flex flex-column gap-3">
+                    <h5 class="text-danger">Absent :</h5>
+                    <div class="d-flex flex-row justify-content-between bg-black p-2 rounded">
+                        <div class="d-flex flex-row gap-3">
+                            <div class="bg-secondary  px-2 rounded d-flex align-items-center">
+                                <i class="fa-solid fa-user fs-1"></i>
+                            </div>
+                            <div class="d-flex flex-column justify-content-between p-2 fs-5">
+                                <div>
+                                    <span class="text-white">Name</span>
+                                </div>
+                                <div class="text-secondary">
+                                    <span>Group :</span>
+                                    <span>ID:####</span>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                        <div>
-                            <span>Name</span>
-                        </div>
-                        <div>
-                            <span>Group :</span>
-                            <span>ID:####</span>
-                        </div>
+                        <div class="align-self-center p-2 fs-5 text-white bg-danger rounded-pill">
+                            status
                         </div>
                     </div>
-                    <div>
-                        status
+                </div>
+                <div class="d-flex flex-column gap-3">
+                    <h5 class="text-danger">Retards :</h5>
+                    <div class="d-flex flex-row justify-content-between bg-black p-2 rounded">
+                        <div class="d-flex flex-row gap-3">
+                            <div class="bg-secondary px-2 rounded d-flex align-items-center">
+                                <i class="fa-solid fa-user fs-1"></i>
+                            </div>
+                            <div class="d-flex flex-column justify-content-between p-2 fs-5">
+                                <div>
+                                    <span class="text-white">Name</span>
+                                </div>
+                                <div class="text-secondary">
+                                    <span>Group :</span>
+                                    <span>ID:####</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="align-self-center p-2 fs-5 text-white bg-warning rounded-pill">
+                            status
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between bg-black p-2 rounded">
+                        <div class="d-flex flex-row gap-3">
+                            <div class="bg-secondary px-2 rounded d-flex align-items-center">
+                                <i class="fa-solid fa-user fs-1"></i>
+                            </div>
+                            <div class="d-flex flex-column justify-content-between p-2 fs-5">
+                                <div>
+                                    <span class="text-white">Name</span>
+                                </div>
+                                <div class="text-secondary">
+                                    <span>Group :</span>
+                                    <span>ID:####</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="align-self-center p-2 fs-5 text-white bg-warning rounded-pill">
+                            status
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        fetch("index.html")
+        fetch("NavBar.html")
             .then(res => res.text())
             .then(data => {
                 document.getElementById("navbar").innerHTML = data;
@@ -135,6 +179,7 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/2974241521.js" crossorigin="anonymous"></script>
+    <script src="../js/index.js"></script>
 </body>
 
 

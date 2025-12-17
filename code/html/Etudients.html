@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des Étudiants</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f5f6fa;
+        }
+
+        .stat-card {
+            background: #163a63;
+            color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
+        }
+
+        .icon-box {
+            width: 55px;
+            height: 55px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+        }
+
+        .search-box {
+            background: #0b1b55;
+            border-radius: 30px;
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            color: white;
+        }
+
+        .search-box input::placeholder {
+            color: #ddd;
+        }
+
+        .table-card {
+            background: #163a63;
+            border-radius: 25px;
+        }
+
+        .table thead {
+            background: #0b1b55;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #5aa2ff;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="d-flex">
+    <div id="navbar" class="flex-shrink-0" style="width: 250px;"></div>
+    <div class="flex-grow-1">
+        <div class="container my-4">
+            <h1 class="fw-bold mb-4">Gestion des Étudiants</h1>
+            <div class="row g-4 mb-4">
+                <div class="col-md-4">
+                    <div class="p-4 stat-card d-flex justify-content-between">
+                        <div>
+                            <h5>Total Étudiants</h5>
+                            <h1 id="total">0</h1>
+                        </div>
+                        <div class="icon-box bg-success"><i class="bi bi-people"></i></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 stat-card d-flex justify-content-between">
+                        <div>
+                            <h5>Étudiants Actifs</h5>
+                            <h1 id="actif">0</h1>
+                        </div>
+                        <div class="icon-box bg-success"><i class="bi bi-person-check"></i></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 stat-card d-flex justify-content-between">
+                        <div>
+                            <h5>Étudiants Inactifs</h5>
+                            <h1 id="inactif">0</h1>
+                        </div>
+                        <div class="icon-box bg-danger"><i class="bi bi-person-x"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+                <div class="search-box px-3 py-2 w-50 d-flex align-items-center">
+                    <i class="bi bi-search text-white me-2"></i>
+                    <input type="text" id="search" class="w-100" placeholder="Rechercher...">
+                </div>
+                <button class="btn btn-primary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#addModal">
+                    <i class="bi bi-plus"></i> Ajouter un étudiant
+                </button>
+            </div>
+            <div class="p-3 table-card">
+                <table class="table table-borderless align-middle text-white mb-0">
+                    <thead>
+                        <tr>
+                            <th>Étudiant</th>
+                            <th>Email</th>
+                            <th>Groupe</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentTable">
+                        <tr data-status="active">
+                            <td>
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="avatar">ZO</div>
+                                    <div><strong>Zakaria Outla</strong><br><small>Groupe 4</small></div>
+                                </div>
+                            </td>
+                            <td>zakariaoutla@gmail.com</td>
+                            <td>Groupe 4</td>
+                            <td><span class="badge bg-success">Actif</span></td>
+                            <td>
+                                <i class="bi bi-eye me-3"></i>
+                                <i class="bi bi-pencil me-3"></i>
+                                <i class="bi bi-trash text-danger"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal fade" id="addModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>Ajouter Étudiant</h5>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input id="name" class="form-control mb-2" placeholder="Nom">
+                        <input id="email" class="form-control mb-2" placeholder="Email">
+                        <input id="group" class="form-control mb-2" placeholder="Groupe">
+                        <select id="status" class="form-control">
+                            <option value="active">Actif</option>
+                            <option value="inactive">Inactif</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success" onclick="addStudent()">Ajouter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/index.js"></script>
+    <script>
+        fetch("NavBar.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("navbar").innerHTML = data;
+            });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2974241521.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const table = document.getElementById("studentTable");
+        const search = document.getElementById("search");
+        function updateStats() {
+            const rows = table.querySelectorAll("tr");
+            let actif = 0, inactif = 0;
+            rows.forEach(r => {
+                if (r.dataset.status === "active") actif++;
+                if (r.dataset.status === "inactive") inactif++;
+            });
+            total.innerText = rows.length;
+            actifEl.innerText = actif;
+            inactifEl.innerText = inactif;
+        }
+        function addStudent() {
+            const name = nameEl.value, email = emailEl.value, group = groupEl.value, status = statusEl.value;
+            if (!name || !email || !group) return alert("عمر جميع الخانات");
+            table.innerHTML += `
+<tr data-status="${status}">
+<td><strong>${name}</strong><br><small>${group}</small></td>
+<td>${email}</td>
+<td>${group}</td>
+<td><span class="badge bg-${status === "active" ? "success" : "danger"}">
+${status === "active" ? "Actif" : "Inactif"}</span></td>
+<td><i class="bi bi-eye"></i><i class="bi bi-pencil mx-2"></i><i class="bi bi-trash text-danger"></i></td>
+</tr>`;
+            updateStats();
+            bootstrap.Modal.getInstance(addModal).hide();
+        }
+        search.addEventListener("keyup", () => {
+            const v = search.value.toLowerCase();
+            document.querySelectorAll("#studentTable tr").forEach(r => {
+                r.style.display = r.innerText.toLowerCase().includes(v) ? "" : "none";
+            });
+        });
+        const total = document.getElementById("total"),
+            actifEl = document.getElementById("actif"),
+            inactifEl = document.getElementById("inactif"),
+            nameEl = document.getElementById("name"),
+            emailEl = document.getElementById("email"),
+            groupEl = document.getElementById("group"),
+            statusEl = document.getElementById("status"),
+            addModal = document.getElementById("addModal");
+
+        updateStats();
+    </script>
+</body>
+
+</html>

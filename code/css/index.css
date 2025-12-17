@@ -28,3 +28,26 @@ nav a {
 nav a:active {
     background-color: rgba(255, 255, 255, 0.15);
 }
+
+.sidebar {
+    width: 200px;
+    background-color: rgb(37, 37, 94);
+    padding: 10px 0;
+    transition: width 0.3s ease;
+}
+
+/* Collapsed state */
+.sidebar.collapsed {
+    width: 70px;
+}
+
+/* Hide text when collapsed */
+.sidebar.collapsed .sidebar-text {
+    display: none;
+}
+
+/* Center icons when collapsed */
+.sidebar.collapsed a,
+.sidebar.collapsed .border-bottom > div {
+    justify-content: center;
+}
