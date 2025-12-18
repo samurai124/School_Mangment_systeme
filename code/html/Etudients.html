@@ -194,7 +194,7 @@
         }
         function addStudent() {
             const name = nameEl.value, email = emailEl.value, group = groupEl.value, status = statusEl.value;
-            if (!name || !email || !group) return alert("عمر جميع الخانات");
+            if (!name || !email || !group) return alert("tous les champs sont obligatoires");
             table.innerHTML += `
 <tr data-status="${status}">
 <td><strong>${name}</strong><br><small>${group}</small></td>
