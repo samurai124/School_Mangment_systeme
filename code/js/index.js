@@ -25,8 +25,8 @@ document.addEventListener("click", (e) => {
 
 // localStorage.setItem("students", JSON.stringify(students));
 
-const students= JSON.parse(localStorage.getItem("students"));
+// const students= JSON.parse(localStorage.getItem("students"));
 
-students.forEach(element => {
-    console.log(element);
-});
+// students.forEach(element => {
+//     console.log(element);
+// });
