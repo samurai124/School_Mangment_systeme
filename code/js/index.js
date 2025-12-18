@@ -1,5 +1,5 @@
+// toggle button function :
 document.addEventListener("click", (e) => {
-    // Check if the clicked element is the toggle button or inside it
     const toggleBtn = e.target.closest("#toggleBtn");
     
     if (toggleBtn) {
@@ -9,6 +9,8 @@ document.addEventListener("click", (e) => {
         }
     }
 });
+
+// students list :
 
 // const students = [
 //     {id : 1, name : "Zaidi Hamza" , email : "email@example.com" , group : 2},
@@ -25,8 +27,39 @@ document.addEventListener("click", (e) => {
 
 // localStorage.setItem("students", JSON.stringify(students));
 
-const students= JSON.parse(localStorage.getItem("students"));
 
-students.forEach(element => {
-    console.log(element);
+// how to get the students list 
+
+// Toggle button function
+document.addEventListener("click", (e) => {
+    const toggleBtn = e.target.closest("#toggleBtn");
+
+    if (toggleBtn) {
+        const sidebar = document.getElementById("sidebar");
+        sidebar?.classList.toggle("collapsed");
+    }
 });
+
+// 1️⃣ Get students list safely
+let students = JSON.parse(localStorage.getItem("students")) || [];
+
+// Display students
+students.forEach(student => {
+    console.log(student);
+});
+
+
+// 2️⃣ Add / Update students list
+const newStudent = {
+    id: 11,
+    name: "New Hamza",
+    email: "email@example.com",
+    group: 1
+};
+
+students.push(newStudent);
+
+// Save back to localStorage
+localStorage.setItem("students", JSON.stringify(students));
+
+
