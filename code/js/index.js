@@ -33,6 +33,13 @@ document.addEventListener("click", (e) => {
 // localStorage.setItem("students", JSON.stringify(students));
 
 
+// const students= JSON.parse(localStorage.getItem("students"));
+
+// students.forEach(element => {
+//     console.log(element);
+// });
+
+
 // absent list
 const absents = [
     { date: "2025-12-17", studentID: 1 },
@@ -130,6 +137,4 @@ function getDayDate(daysAgo = 0) {
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
 }
-
-
 
