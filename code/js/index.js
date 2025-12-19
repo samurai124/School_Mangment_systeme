@@ -1,17 +1,23 @@
 // toggle button function :
+// toggle button function :
 document.addEventListener("click", (e) => {
     const toggleBtn = e.target.closest("#toggleBtn");
-    
     if (toggleBtn) {
+        // Toggle the sidebar itself (inside the imported NavBar.html content)
         const sidebar = document.getElementById("sidebar");
         if (sidebar) {
             sidebar.classList.toggle("collapsed");
+        }
+
+        // Toggle the spacer container in the main page
+        const spacer = document.getElementById("navbar");
+        if (spacer) {
+            spacer.classList.toggle("collapsed");
         }
     }
 });
 
 // students list :
-
 // const students = [
 //     {id : 1, name : "Zaidi Hamza" , email : "email@example.com" , group : 2},
 //     {id : 2, name : "Zaidi Hamza" , email : "email@example.com" , group : 2},
@@ -24,32 +30,38 @@ document.addEventListener("click", (e) => {
 //     {id : 9, name : "Zaidi Hamza" , email : "email@example.com" , group : 2},
 //     {id :10, name : "Zaidi Hamza" , email : "email@example.com" , group : 2},
 // ]
-
 // localStorage.setItem("students", JSON.stringify(students));
 
 
-// how to get the students list 
-
-// Toggle button function
-document.addEventListener("click", (e) => {
-    const toggleBtn = e.target.closest("#toggleBtn");
-
-    if (toggleBtn) {
-        const sidebar = document.getElementById("sidebar");
-        sidebar?.classList.toggle("collapsed");
-    }
-});
-
-// 1️⃣ Get students list safely
-let students = JSON.parse(localStorage.getItem("students")) || [];
-
-// Display students
-students.forEach(student => {
-    console.log(student);
-});
+// absent list
+const absents = [
+    { date: "2025-12-18", studentID: 1 },
+    { date: "2025-12-18", studentID: 2 },
+    { date: "2025-12-18", studentID: 3 },
+];
+// retard list 
+const retards = [
+    { date: "2025-12-18", studentID: 3, minutesLate: 10 },
+    { date: "2025-12-18", studentID: 4, minutesLate: 10 },
+    { date: "2025-12-18", studentID: 5, minutesLate: 10 }
+];
 
 
-// 2️⃣ Add / Update students list
+
+function getStudents() {
+    let students = JSON.parse(localStorage.getItem("students")) || [];
+    return students;
+}
+function getAbsents() {
+    let absents = JSON.parse(localStorage.getItem("absents")) || [];
+    return absents;
+}
+function getRetards() {
+    let retards = JSON.parse(localStorage.getItem("retards")) || [];
+    return retards;
+}
+
+
 const newStudent = {
     id: 11,
     name: "New Hamza",
@@ -57,9 +69,48 @@ const newStudent = {
     group: 1
 };
 
-students.push(newStudent);
+function addStudent(newStudent) {
+    let students = JSON.parse(localStorage.getItem("students")) || [];
+    students.push(newStudent);
+    localStorage.setItem("students", JSON.stringify(students));
+}
 
-// Save back to localStorage
-localStorage.setItem("students", JSON.stringify(students));
+
+// enregistrer un retard
+
+const newRetard = {
+    date: "2025-12-18",
+    studentID: 4,
+    minutesLate: 10
+}
+function enregistrerRetard(newRetard) {
+    let absents = JSON.parse(localStorage.getItem("absents")) || [];
+    absents.push(newRetard);
+    localStorage.setItem("students", JSON.stringify(newRetard));
+}
+
+
+
+// enregistrer un absent
+const newAbsent = {
+    date: "2025-12-18",
+    studentID: 4,
+    minutesLate: 10
+}
+function enregistrerAbsent(newAbsent) {
+    let retards = JSON.parse(localStorage.getItem("retards")) || [];
+    retards.push(newAbsent);
+    localStorage.setItem("students", JSON.stringify(newAbsent));
+}
+
+function getDayDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`;
+    return formattedDate;
+}
+
 
 
