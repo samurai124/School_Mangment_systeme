@@ -13,7 +13,7 @@
 </head>
 
 <body class="d-flex">
-    <div id="navbar" class="flex-shrink-0" style="width: 250px;"></div>
+    <div id="navbar" class="flex-shrink-0 navbar-spacer"></div>
     <div class="d-flex flex-column gap-4 flex-grow-1">
         <div class="flex-grow-1 p-3 m-3 rounded " style="background-color: rgb(37, 37, 94);">
             <div class="d-flex align-items-center justify-content-between mb-3 pb-4 text-white border-bottom">
@@ -26,145 +26,14 @@
                         aria-label="Search" aria-describedby="basic-addon1">
                 </div>
             </div>
-            <div class="d-flex flex-column gap-2">
-                <div class="d-flex flex-column gap-2 bg-black p-2 rounded">
-                    <div class="ps-2 text-white d-flex align-items-center justify-content-start gap-4">
-                        <i class="fa-regular fa-calendar fs-4"></i>
-                        <span>La date :</span>
-                    </div>
-                    <div class="ps-5 text-secondary d-flex align-items-center justify-content-start gap-4">
-                        <span>1 Absent</span>
-                        <span>5 Retards</span>
-                        <span>50 Personne</span>
-                    </div>
-                    <div class=" ps-5 text-white d-flex align-items-center justify-content-start gap-4">
-                        <button class="btn btn-primary d-flex align-items-center justify-content-center gap-2">
-                            <i class="fa-solid fa-eye"></i>
-                            <span>Voir les détails</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="d-flex flex-column gap-2 bg-black p-2 rounded">
-                    <div class="ps-2 text-white d-flex align-items-center justify-content-start gap-4">
-                        <i class="fa-regular fa-calendar fs-4"></i>
-                        <span>La date :</span>
-                    </div>
-                    <div class="ps-5 text-secondary d-flex align-items-center justify-content-start gap-4">
-                        <span>1 Absent</span>
-                        <span>5 Retards</span>
-                        <span>50 Personne</span>
-                    </div>
-                    <div class=" ps-5 text-white d-flex align-items-center justify-content-start gap-4">
-                        <button class="btn btn-primary d-flex align-items-center justify-content-center gap-2">
-                            <i class="fa-solid fa-eye"></i>
-                            <span>Voir les détails</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="d-flex flex-column gap-2 bg-black p-2 rounded">
-                    <div class="ps-2 text-white d-flex align-items-center justify-content-start gap-4">
-                        <i class="fa-regular fa-calendar fs-4"></i>
-                        <span>La date :</span>
-                    </div>
-                    <div class="ps-5 text-secondary d-flex align-items-center justify-content-start gap-4">
-                        <span>1 Absent</span>
-                        <span>5 Retards</span>
-                        <span>50 Personne</span>
-                    </div>
-                    <div class=" ps-5 text-white d-flex align-items-center justify-content-start gap-4">
-                        <button class="btn btn-primary d-flex align-items-center justify-content-center gap-2">
-                            <i class="fa-solid fa-eye"></i>
-                            <span>Voir les détails</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="d-flex flex-column gap-2 bg-black p-2 rounded">
-                    <div class="ps-2 text-white d-flex align-items-center justify-content-start gap-4">
-                        <i class="fa-regular fa-calendar fs-4"></i>
-                        <span>La date :</span>
-                    </div>
-                    <div class="ps-5 text-secondary d-flex align-items-center justify-content-start gap-4">
-                        <span>1 Absent</span>
-                        <span>5 Retards</span>
-                        <span>50 Personne</span>
-                    </div>
-                    <div class=" ps-5 text-white d-flex align-items-center justify-content-start gap-4">
-                        <button class="btn btn-primary d-flex align-items-center justify-content-center gap-2">
-                            <i class="fa-solid fa-eye"></i>
-                            <span>Voir les détails</span>
-                        </button>
-                    </div>
-                </div>
+            <div id="date_cards" class="d-flex flex-column gap-2">
             </div>
         </div>
-        <div class="flex-grow-1 p-3 m-3 rounded " style="background-color: rgb(37, 37, 94);">
+        <div id="details_container" class="flex-grow-1 p-3 m-3 rounded " style="background-color: rgb(37, 37, 94);">
             <div class="d-flex align-items-center justify-content-between mb-3 pb-4 text-white border-bottom">
                 <h4 class="m-0">Details : <span>Date</span></h4>
             </div>
-            <div class="d-flex flex-column gap-2">
-                <div class="d-flex flex-column gap-3">
-                    <h5 class="text-danger">Absent :</h5>
-                    <div class="d-flex flex-row justify-content-between bg-black p-2 rounded">
-                        <div class="d-flex flex-row gap-3">
-                            <div class="bg-secondary  px-2 rounded d-flex align-items-center">
-                                <i class="fa-solid fa-user fs-1"></i>
-                            </div>
-                            <div class="d-flex flex-column justify-content-between p-2 fs-5">
-                                <div>
-                                    <span class="text-white">Name</span>
-                                </div>
-                                <div class="text-secondary">
-                                    <span>Group :</span>
-                                    <span>ID:####</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="align-self-center p-2 fs-5 text-white bg-danger rounded-pill">
-                            status
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex flex-column gap-3">
-                    <h5 class="text-danger">Retards :</h5>
-                    <div class="d-flex flex-row justify-content-between bg-black p-2 rounded">
-                        <div class="d-flex flex-row gap-3">
-                            <div class="bg-secondary px-2 rounded d-flex align-items-center">
-                                <i class="fa-solid fa-user fs-1"></i>
-                            </div>
-                            <div class="d-flex flex-column justify-content-between p-2 fs-5">
-                                <div>
-                                    <span class="text-white">Name</span>
-                                </div>
-                                <div class="text-secondary">
-                                    <span>Group :</span>
-                                    <span>ID:####</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="align-self-center p-2 fs-5 text-white bg-warning rounded-pill">
-                            status
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between bg-black p-2 rounded">
-                        <div class="d-flex flex-row gap-3">
-                            <div class="bg-secondary px-2 rounded d-flex align-items-center">
-                                <i class="fa-solid fa-user fs-1"></i>
-                            </div>
-                            <div class="d-flex flex-column justify-content-between p-2 fs-5">
-                                <div>
-                                    <span class="text-white">Name</span>
-                                </div>
-                                <div class="text-secondary">
-                                    <span>Group :</span>
-                                    <span>ID:####</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="align-self-center p-2 fs-5 text-white bg-warning rounded-pill">
-                            status
-                        </div>
-                    </div>
-                </div>
+            <div  class="d-flex flex-column gap-2">
             </div>
         </div>
     </div>
@@ -180,6 +49,7 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/2974241521.js" crossorigin="anonymous"></script>
     <script src="../js/index.js"></script>
+    <script src="/code/js/historique.js"></script>
 </body>
 
 

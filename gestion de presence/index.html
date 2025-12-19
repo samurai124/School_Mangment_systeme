@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Prise de Présence</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#16345c] text-white min-h-screen p-6">
+
+  <h1 class="text-lg font-semibold mb-4">Prise de Presence Quotidienne</h1>
+
+  <!-- Recherche -->
+  <input
+    id="searchInput"
+    type="text"
+    placeholder="🔍 Rechercher un étudiant..."
+     class="fixed top-6 right-6 w-48 px-3 py-2 rounded-lg bg-[#0b1d3a] text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+  />
+
+  <!-- Bouton enregistrer -->
+  <button
+    id="saveBtn"
+    class="bg-purple-600 px-4 py-2 rounded-lg mb-6">
+
+  >
+    💾 Enregistrer la presence
+  </button>
+
+  <hr class="border-white/20 mb-6">
+
+  <!-- Date -->
+  <p class="text-sm text-gray-300 mb-2">SELECTIONNER LA DATE</p>
+  <input
+    type="date"
+    id="date"
+    class="bg-[#0b1d3a] px-4 py-2 rounded-lg mb-6"
+    value=""
+  />
+
+  <!-- Liste étudiants -->
+  <div id="studentsContainer" class="space-y-4"></div>
+
+  <!-- Retard Info -->
+  <div
+    id="retardBox"
+    class="hidden bg-[#0b1d3a] border-l-4 border-yellow-400 p-4 rounded-xl mt-6"
+  >
+    <p class="text-yellow-400 font-semibold mb-4">Informations du retard</p>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <p class="text-xs text-gray-400 mb-1">HEURE D’ARRIVEE</p>
+        <input
+          id="retardTime"
+          type="time"
+          class="w-full bg-[#16345c] p-2 rounded"
+        />
+      </div>
+
+      <div>
+        <p class="text-xs text-gray-400 mb-1">MOTIF DU RETARD</p>
+        <input
+          id="retardMotif"
+          type="text"
+          class="w-full bg-[#16345c] p-2 rounded"
+        />
+      </div>
+    </div>
+
+    <button
+      id="saveRetardBtn"
+      class="mt-4 bg-purple-600 px-4 py-2 rounded w-full font-semibold"
+    >
+      Enregistrer Retard
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

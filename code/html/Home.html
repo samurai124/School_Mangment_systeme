@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Statistiques</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="d-flex" style="background-color: #f8f9fa; font-family: sans-serif;">
+    <div id="navbar" class="flex-shrink-0 navbar-spacer"></div>
+    <div class="d-flex flex-column gap-4 flex-grow-1 pt-2">
+        <div class="flex-grow-1" style="padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <h1 style="font-weight: 700; margin-bottom: 24px;">Statistiques</h1>
+
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div
+                        style="background-color: #1a3761; color: white; border-radius: 15px; padding: 20px; position: relative; height: 100%;">
+                        <div style="font-size: 0.9rem; font-weight: 600; margin-bottom: 10px;">Taux d'absence</div>
+                        <div style="font-size: 1.8rem; font-weight: 700; color: #a3cf62;" id="taux_absence">12.5%</div>
+                        <div
+                            style="position: absolute; right: 20px; bottom: 20px; font-size: 1.5rem; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 5px; background: rgba(255,255,255,0.1); color: #ef4444;">
+                            ❌</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div
+                        style="background-color: #1a3761; color: white; border-radius: 15px; padding: 20px; position: relative; height: 100%;">
+                        <div style="font-size: 0.9rem; font-weight: 600; margin-bottom: 10px;">Taux de retard</div>
+                        <div style="font-size: 1.8rem; font-weight: 700; color: #a3cf62;" id="taux_retards">18.3%</div>
+                        <div
+                            style="position: absolute; right: 20px; bottom: 20px; font-size: 1.5rem; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 5px; background: rgba(255,255,255,0.1); color: #ef4444;">
+                            ⏳</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div
+                        style="background-color: #1a3761; color: white; border-radius: 15px; padding: 20px; position: relative; height: 100%;">
+                        <div style="font-size: 0.9rem; font-weight: 600; margin-bottom: 10px;">Taux de présence</div>
+                        <div style="font-size: 1.8rem; font-weight: 700; color: #a3cf62;" id="taux_presence">62.2%</div>
+                        <div
+                            style="position: absolute; right: 20px; bottom: 20px; font-size: 1.5rem; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 5px; background: rgba(255,255,255,0.1); color: #22c55e;">
+                            ✅</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background-color: #1a3761; border-radius: 15px; margin-top: 25px; padding: 20px; color: white;">
+                <div
+                    style="border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; margin-bottom: 15px; font-weight: 700;">
+                    📊 Top 3 - Plus absents</div>
+                <table style="width: 100%; border-collapse: separate; border-spacing: 0 8px; text-align: center;">
+                    <thead>
+                        <tr style="font-size: 0.75rem; text-transform: uppercase; color: rgba(255,255,255,0.6);">
+                            <th style="padding: 10px;">Rang</th>
+                            <th style="text-align: left; padding: 10px;">Étudiants</th>
+                            <th style="padding: 10px;">Absences</th>
+                        </tr>
+                    </thead>
+                    <tbody id="top3AbsentsBody"></tbody>
+                </table>
+            </div>
+
+            <div style="background-color: #1a3761; border-radius: 15px; margin-top: 25px; padding: 20px; color: white;">
+                <div
+                    style="border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; margin-bottom: 15px; font-weight: 700;">
+                    ⏳ Top 3 - Plus en retard</div>
+                <table style="width: 100%; border-collapse: separate; border-spacing: 0 8px; text-align: center;">
+                    <thead>
+                        <tr style="font-size: 0.75rem; text-transform: uppercase; color: rgba(255,255,255,0.6);">
+                            <th style="padding: 10px;">Rang</th>
+                            <th style="text-align: left; padding: 10px;">Étudiants</th>
+                            <th style="padding: 10px;">Retards</th>
+                        </tr>
+                    </thead>
+                    <tbody id="top3RetardsBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        fetch("NavBar.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("navbar").innerHTML = data;
+            });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2974241521.js" crossorigin="anonymous"></script>
+    <script src="../js/index.js"></script>
+    <script src="/code/js/home.js"></script>
+</body>
+
+</html>

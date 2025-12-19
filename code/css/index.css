@@ -48,6 +48,17 @@ nav a:active {
 
 /* Center icons when collapsed */
 .sidebar.collapsed a,
-.sidebar.collapsed .border-bottom > div {
+.sidebar.collapsed .border-bottom>div {
     justify-content: center;
+}
+
+/* Spacer for the fixed navbar */
+.navbar-spacer {
+    width: 250px;
+    transition: width 0.3s ease;
+}
+
+.navbar-spacer.collapsed {
+    width: 80px;
+    /* Slightly larger than sidebar 70px to avoid overlap */
 }
