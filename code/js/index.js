@@ -35,10 +35,18 @@ document.addEventListener("click", (e) => {
 
 // absent list
 const absents = [
-    { date: "2025-12-18", studentID: 1 },
-    { date: "2025-12-18", studentID: 2 },
+    { date: "2025-12-17", studentID: 1 },
+    { date: "2025-12-17", studentID: 2 },
+    { date: "2025-12-16", studentID: 3 },
+    { date: "2025-12-15", studentID: 3 },
+    { date: "2025-12-15", studentID: 3 },
+    { date: "2025-12-18", studentID: 3 },
     { date: "2025-12-18", studentID: 3 },
 ];
+
+
+
+localStorage.setItem("absents",JSON.stringify(absents));
 // retard list 
 const retards = [
     { date: "2025-12-18", studentID: 3, minutesLate: 10 },
@@ -56,9 +64,20 @@ function getAbsents() {
     let absents = JSON.parse(localStorage.getItem("absents")) || [];
     return absents;
 }
+function getAbsentsBydates(date){
+    let absents = JSON.parse(localStorage.getItem("absents")) || [];
+    absents = absents.filter((e)=> e.date == date) || [];
+    return absents;
+}
 function getRetards() {
     let retards = JSON.parse(localStorage.getItem("retards")) || [];
     return retards;
+}
+
+function getRetardsBydate(date) {
+    let retards = JSON.parse(localStorage.getItem("retards")) || [];
+    retards = retards.filter((e)=> e.date == date) || [];
+    return retards;    
 }
 
 
@@ -103,13 +122,13 @@ function enregistrerAbsent(newAbsent) {
     localStorage.setItem("students", JSON.stringify(newAbsent));
 }
 
-function getDayDate() {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    const formattedDate = `${year}-${month}-${day}`;
-    return formattedDate;
+function getDayDate(daysAgo = 0) {
+    const date = new Date();
+    date.setDate(date.getDate() - daysAgo);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
 }
 
 

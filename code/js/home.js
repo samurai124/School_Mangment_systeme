@@ -81,6 +81,7 @@ function updateStates() {
     const today = getDayDate(); 
     document.querySelector("#taux_absence").innerText = `${tauxAbsenceParJour(today)}%`;
     document.querySelector("#taux_retards").innerText = `${tauxRetardsParJour(today)}%`;
+    document.querySelector("#taux_presence").innerText =`${tauxPresenceParJour(today)}%`;
     const topAbsents = top3Students(getAbsents());
     const topRetards = top3Students(getRetards());
     const absentsBody = document.getElementById("top3AbsentsBody");
@@ -103,3 +104,6 @@ function updateStates() {
 document.addEventListener('DOMContentLoaded', () => {
     updateStates();
 });
+
+
+console.log(tauxPresenceParJour(getDayDate()));
