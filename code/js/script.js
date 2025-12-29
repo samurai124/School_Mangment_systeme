@@ -82,16 +82,13 @@ const searchByName = function () {
     const result = studentsData.filter(student =>
         student.fullName.toLowerCase().includes(filter)
     );
-
+console.log(result);
     showSearch(result);
 };
 
 searchInput.addEventListener('input', searchByName);
 
-function editStudent(studentName){
-    let student = students.find(item => item.fullName === studentName)
 
-}
 
 function displayStudents() {
     tableBody.innerHTML = "";
@@ -114,3 +111,12 @@ function displayStudents() {
         `;
     });
 }
+
+//              ======================= display students status ==================
+
+let activeStudents = students.filter((e)=> e.status === "Actif");
+let nonActiveStudents = students.filter((e) => e.status === 'Inactif') 
+
+document.querySelector('#studentsTotal').textContent = students.length
+document.querySelector('#activeStudents').textContent = activeStudents.length
+document.querySelector('#nonActiveStudents').textContent = nonActiveStudents.length
