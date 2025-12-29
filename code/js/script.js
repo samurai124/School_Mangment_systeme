@@ -17,6 +17,7 @@ function saveInfo() {
     localStorage.setItem('student', JSON.stringify(students));
     studentsData = students; 
     displayStudents();
+    location.reload()
 }
 
 saveBtn.addEventListener('click', function (e) {
@@ -24,8 +25,6 @@ saveBtn.addEventListener('click', function (e) {
     console.log('test');
     saveInfo();
 });
-
-
 
 let studentsData = JSON.parse(localStorage.getItem("student")) || [];
 
@@ -112,7 +111,7 @@ function displayStudents() {
     });
 }
 
-//              ======================= display students status ==================
+//              -------------------- display students status --------------------
 
 let activeStudents = students.filter((e)=> e.status === "Actif");
 let nonActiveStudents = students.filter((e) => e.status === 'Inactif') 
