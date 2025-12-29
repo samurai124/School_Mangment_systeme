@@ -1,6 +1,6 @@
 body {
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: small
+    font-size: small;
 }
 
 nav>div>a:hover {

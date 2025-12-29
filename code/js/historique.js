@@ -28,7 +28,7 @@ function showdetails(date) {
     const retards = getRetardsBydate(date);
     const students = getStudents();
     console.log(date);
-    
+
 
     const container = document.querySelector("#details_container");
     container.innerHTML = "";
@@ -41,6 +41,7 @@ function showdetails(date) {
             <h5 class="text-danger">Absent :</h5>
             ${absents.map(element => {
         const student = students.find(s => s.id === element.studentID);
+        if (!student) return '';
         return `
                 <div class="d-flex flex-row justify-content-between bg-black p-2 rounded">
                     <div class="d-flex flex-row gap-3">
@@ -65,6 +66,7 @@ function showdetails(date) {
             <h5 class="text-warning">Retards :</h5>
             ${retards.map(element => {
         const student = students.find(s => s.id === element.studentID);
+        if (!student) return '';
         return `
                 <div class="d-flex flex-row justify-content-between bg-black p-2 rounded">
                     <div class="d-flex flex-row gap-3">

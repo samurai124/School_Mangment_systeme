@@ -48,8 +48,8 @@ function top3Students(dataList) {
 
 function renderTop3Row(item, index, type) {
     const initials = item.name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
-    const colors = ['#3b82f6', '#ef4444', '#eab308']; 
-    const rankColor = colors[index] || '#6c757d'; 
+    const colors = ['#3b82f6', '#ef4444', '#eab308'];
+    const rankColor = colors[index] || '#6c757d';
     let badgeClass = '';
     let label = '';
     if (type === 'absent') {
@@ -78,10 +78,10 @@ function renderTop3Row(item, index, type) {
 }
 
 function updateStates() {
-    const today = getDayDate(); 
+    const today = getDayDate();
     document.querySelector("#taux_absence").innerText = `${tauxAbsenceParJour(today)}%`;
     document.querySelector("#taux_retards").innerText = `${tauxRetardsParJour(today)}%`;
-    document.querySelector("#taux_presence").innerText =`${tauxPresenceParJour(today)}%`;
+    document.querySelector("#taux_presence").innerText = `${tauxPresenceParJour(today)}%`;
     const topAbsents = top3Students(getAbsents());
     const topRetards = top3Students(getRetards());
     const absentsBody = document.getElementById("top3AbsentsBody");
@@ -103,6 +103,7 @@ function updateStates() {
 }
 document.addEventListener('DOMContentLoaded', () => {
     updateStates();
+    localStorageSettings()
 });
 
 
