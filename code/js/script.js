@@ -12,10 +12,10 @@ const statusInput = document.querySelector('#status');
 //            -----------save data in local Storage-----------
 function saveInfo() {
     students = JSON.parse(localStorage.getItem('student')) || [];
-    students.push({ fullName: fullName.value,  email: email.value, group: group.value, status: statusInput.value});
+    students.push({ fullName: fullName.value, email: email.value, group: group.value, status: statusInput.value });
 
     localStorage.setItem('student', JSON.stringify(students));
-    studentsData = students; 
+    studentsData = students;
     displayStudents();
 }
 
@@ -50,7 +50,7 @@ function displayStudents() {
     });
 }
 
-  displayStudents();
+displayStudents();
 
 //            ----------- search function -----------
 
@@ -88,7 +88,7 @@ const searchByName = function () {
 
 searchInput.addEventListener('input', searchByName);
 
-function editStudent(studentName){
+function editStudent(studentName) {
     let student = students.find(item => item.fullName === studentName)
 
 }

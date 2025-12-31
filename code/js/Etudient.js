@@ -31,9 +31,6 @@ saveBtn.addEventListener('click', function (e) {
 
 let studentsData = globalAppStudents;
 
-
-
-
 //            ----------- search function -----------
 
 function showSearch(data) {
@@ -89,7 +86,7 @@ function deleteStudent(id) {
         localStorage.setItem("students", JSON.stringify(globalAppStudents));
         studentsData = globalAppStudents;
         displayStudents();
-        location.reload(); // Simple reload to update stats and list
+        location.reload(); 
     }
 }
 
