@@ -1,6 +1,6 @@
 let currentAttendance = {};
 let allStudents = [];
-
+console.log(allStudents);
 document.addEventListener('DOMContentLoaded', () => {
     init();
 });
@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
 function init() {
     let students = JSON.parse(localStorage.getItem("students"));
     if (!students || students.length === 0) {
-        students = [
-            { id: 1, name: "Zaidi Hamza", email: "email@example.com", group: 2 },
-            { id: 2, name: "Amina Benali", email: "amina@example.com", group: 1 },
-            { id: 3, name: "Karim Safi", email: "karim@example.com", group: 2 },
-            { id: 4, name: "Sara Toumi", email: "sara@example.com", group: 1 },
-            { id: 5, name: "Mohamed Rami", email: "mohamed@example.com", group: 2 }
-        ];
+        // students = [
+        //     { id: 1, name: "Zaidi Hamza", email: "email@example.com", group: 2 },
+        //     { id: 2, name: "Amina Benali", email: "amina@example.com", group: 1 },
+        //     { id: 3, name: "Karim Safi", email: "karim@example.com", group: 2 },
+        //     { id: 4, name: "Sara Toumi", email: "sara@example.com", group: 1 },
+        //     { id: 5, name: "Mohamed Rami", email: "mohamed@example.com", group: 2 }
+        // ];
         localStorage.setItem("students", JSON.stringify(students));
     }
 
@@ -158,7 +158,7 @@ function saveLateData(studentId, domKey) {
     }
 }
 
-function saveAllAttendance() {
+// function saveAllAttendance() {
     let absents = JSON.parse(localStorage.getItem("absents")) || [];
     let retards = JSON.parse(localStorage.getItem("retards")) || [];
     const todayDate = new Date().toISOString().split('T')[0]; 
@@ -191,4 +191,56 @@ function saveAllAttendance() {
     } else {
         alert("Aucun changement (Absent/Retard) à enregistrer.");
     }
+console.log(absents);
+console.log(retards);
+// }
+function getStudentNameById(id) {
+    const student = allStudents.find(s => s.id === id);
+    return student ? student.name : "Unknown";
 }
+
+function saveAllAttendance() {
+    let absents = JSON.parse(localStorage.getItem("absents")) || [];
+    let retards = JSON.parse(localStorage.getItem("retards")) || [];
+    const todayDate = new Date().toISOString().split('T')[0];
+    let countSaved = 0;
+
+    for (const [studentId, data] of Object.entries(currentAttendance)) {
+        const id = parseInt(studentId);
+        const studentName = getStudentNameById(id);
+
+        if (data.status === 'Absent') {
+            absents.push({
+                studentID: id,
+                name: studentName,  
+                date: todayDate
+            });
+            countSaved++;
+        } 
+        else if (data.status === 'Retard') {
+            retards.push({
+                studentID: id,
+                name: studentName,  
+                minutesLate: 0,
+                arrivalTime: data.time,
+                motive: data.motive
+            });
+            countSaved++;
+        }
+    }
+
+    localStorage.setItem("absents", JSON.stringify(absents));
+    localStorage.setItem("retards", JSON.stringify(retards));
+
+    if (countSaved > 0) {
+        alert(`Succès ! ${countSaved} entrées enregistrées.`);
+        currentAttendance = {};
+        renderStudents(allStudents);
+    } else {
+        alert("Aucun changement (Absent/Retard) à enregistrer.");
+    }
+    console.log('retards:  ', retards);
+    console.log("absents:  ",absents);
+}
+
+

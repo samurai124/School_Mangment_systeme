@@ -1,5 +1,4 @@
-// toggle button function :
-// toggle button function :
+
 document.addEventListener("click", (e) => {
     const toggleBtn = e.target.closest("#toggleBtn");
     if (toggleBtn) {
