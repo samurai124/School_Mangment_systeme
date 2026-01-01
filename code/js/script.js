@@ -8,7 +8,7 @@ const group = document.querySelector('#group');
 const saveBtn = document.querySelector('#saveBtn');
 const tableBody = document.getElementById("studentsTable");
 const statusInput = document.querySelector('#status');
-
+console.log(students);
 //            -----------save data in local Storage-----------
 function saveInfo() {
     students = JSON.parse(localStorage.getItem('student')) || [];

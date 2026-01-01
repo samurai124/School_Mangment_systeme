@@ -1,5 +1,5 @@
 let globalAppStudents = getStudents();
-
+console.log(globalAppStudents);
 const searchInput = document.querySelector('#search');
 const searchbTN = document.querySelector('#search-btn');
 const fullName = document.querySelector('#fullName');
@@ -22,7 +22,6 @@ function saveInfo() {
 
 saveBtn.addEventListener('click', function (e) {
     e.preventDefault();
-    console.log('test');
     saveInfo();
     location.reload();
 });
@@ -74,7 +73,6 @@ function editStudent(id) {
         email.value = student.email;
         group.value = student.group;
         statusInput.value = student.status;
-        // Open modal logic would go here if not handled by bootstrap
         const modal = new bootstrap.Modal(document.getElementById('addModal'));
         modal.show();
     }
