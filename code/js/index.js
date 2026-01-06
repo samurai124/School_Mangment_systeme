@@ -22,18 +22,18 @@ document.addEventListener("click", (e) => {
 function localStorageSettings() {
     localStorage.clear();
     // students list :
-    const initialStudents = [
-        { id: 1, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
-        { id: 2, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
-        { id: 3, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
-        { id: 4, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
-        { id: 5, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
-        { id: 6, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
-        { id: 7, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
-        { id: 8, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
-        { id: 9, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
-        { id: 10, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
-    ];
+    // const initialStudents = [
+    //     { id: 1, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
+    //     { id: 2, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
+    //     { id: 3, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
+    //     { id: 4, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
+    //     { id: 5, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
+    //     { id: 6, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
+    //     { id: 7, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
+    //     { id: 8, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
+    //     { id: 9, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
+    //     { id: 10, name: "Zaidi Hamza", email: "email@example.com", group: 2, status: "active" },
+    // ];
 
     if (!localStorage.getItem("students")) {
         localStorage.setItem("students", JSON.stringify(initialStudents));
@@ -41,15 +41,7 @@ function localStorageSettings() {
 
 
     // absent list
-    const absents = [
-        { date: "2025-12-26", studentID: 1 },
-        { date: "2025-12-27", studentID: 2 },
-        { date: "2025-12-28", studentID: 3 },
-        { date: "2025-12-29", studentID: 3 },
-        { date: "2025-12-29", studentID: 3 },
-        { date: "2025-12-29", studentID: 3 },
-        { date: "2025-12-29", studentID: 3 },
-    ];
+  
     if (!localStorage.getItem("absents")) {
         localStorage.setItem("absents", JSON.stringify(absents));
     }
@@ -79,36 +71,42 @@ function localStorageSettings() {
 
 
 // absent list
-const absents = [
-    { date: "2025-12-17", studentID: 1 },
-    { date: "2025-12-17", studentID: 2 },
-    { date: "2025-12-16", studentID: 3 },
-    { date: "2025-12-15", studentID: 3 },
-    { date: "2025-12-15", studentID: 3 },
-    { date: "2025-12-18", studentID: 3 },
-    { date: "2025-12-18", studentID: 3 },
-];
+// const absents = [
+//     { date: "2025-12-17", studentID: 1 },
+//     { date: "2025-12-17", studentID: 2 },
+//     { date: "2025-12-16", studentID: 3 },
+//     { date: "2025-12-15", studentID: 3 },
+//     { date: "2025-12-15", studentID: 3 },
+//     { date: "2025-12-18", studentID: 3 },
+//     { date: "2025-12-18", studentID: 3 },
+// ];
 
 
 
 
 //localStorage.setItem("absents",JSON.stringify(absents));
 // retard list 
-const retards = [
-    { date: "2025-12-26", studentID: 3, minutesLate: 10 },
-    { date: "2025-12-27", studentID: 4, minutesLate: 10 },
-    { date: "2025-12-28", studentID: 5, minutesLate: 10 }
-];
+// const retards = [
+//     { date: "2025-12-26", studentID: 3, minutesLate: 10 },
+//     { date: "2025-12-27", studentID: 4, minutesLate: 10 },
+//     { date: "2025-12-28", studentID: 5, minutesLate: 10 }
+// ];
 if (!localStorage.getItem("retards")) {
     localStorage.setItem("retards", JSON.stringify(retards));
 }
 
 
 //localStorage.setItem("retards",JSON.stringify(retards));
+// let students = JSON.parse(localStorage.getItem("students")) || [];
+// console.log('all:  ',students);
+    let students = JSON.parse(localStorage.getItem("students")) || [];
+
 function getStudents() {
     let students = JSON.parse(localStorage.getItem("students")) || [];
     return students;
 }
+const data=getStudents()
+console.log(data);
 function getAbsents() {
     let absents = JSON.parse(localStorage.getItem("absents")) || [];
     return absents;
@@ -130,12 +128,12 @@ function getRetardsBydate(date) {
 }
 
 
-const newStudent = {
-    id: 11,
-    name: "New Hamza",
-    email: "email@example.com",
-    group: 1
-};
+// const newStudent = {
+//     id: 11,
+//     name: "New Hamza",
+//     email: "email@example.com",
+//     group: 1
+// };
 
 function addStudent(newStudent) {
     let students = JSON.parse(localStorage.getItem("students")) || [];

@@ -1,7 +1,8 @@
 const login = document.querySelector("#login");
 const fullNameInput = document.querySelector("#identifiant");
-let studentsData = JSON.parse(localStorage.getItem("student")) || [];
-console.log(studentsData);
+// let studentsData = JSON.parse(localStorage.getItem("student")) || [];
+let students = JSON.parse(localStorage.getItem("students")) || [];
+// console.log(students);
 
 login.addEventListener("click", function (e) {
   e.preventDefault();
@@ -14,21 +15,18 @@ login.addEventListener("click", function (e) {
     return;
   }
 
-  if (studentsData.length === 0) {
+  if (students.length === 0) {
     alert("No learners found in the system")
     return;
   }
 
-  const apprenant = studentsData.find(a => {
-    const storedFullName = `${a.fullName}`.toLowerCase();
-    return storedFullName === fullName;
-  });
+  const apprenant = students.find(a =>a.name ==fullName);
 
   if (!apprenant) {
     alert("Learner not found")
     return;
   }
-  localStorage.setItem("currentApprenantId", apprenant.id);
-
+  
+  JSON.stringify(localStorage.setItem("currentApprenantId", JSON.stringify(apprenant)))
   window.location.href = "dashboard.html";
 });
