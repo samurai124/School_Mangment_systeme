@@ -1,8 +1,7 @@
 const login = document.querySelector("#login");
 const fullNameInput = document.querySelector("#identifiant");
-let studentsData = JSON.parse(localStorage.getItem("student")) || [];
+let studentsData = JSON.parse(localStorage.getItem("students")) || [];
 console.log(studentsData);
-
 login.addEventListener("click", function (e) {
   e.preventDefault();
   console.log('test');
@@ -20,7 +19,7 @@ login.addEventListener("click", function (e) {
   }
 
   const apprenant = studentsData.find(a => {
-    const storedFullName = `${a.fullName}`.toLowerCase();
+    const storedFullName = `${a.name}`.toLowerCase();
     return storedFullName === fullName;
   });
 

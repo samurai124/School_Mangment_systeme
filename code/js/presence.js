@@ -158,7 +158,7 @@ function saveLateData(studentId, domKey) {
     }
 }
 
-// function saveAllAttendance() {
+function saveAllAttendance() {
     let absents = JSON.parse(localStorage.getItem("absents")) || [];
     let retards = JSON.parse(localStorage.getItem("retards")) || [];
     const todayDate = new Date().toISOString().split('T')[0]; 
@@ -193,7 +193,7 @@ function saveLateData(studentId, domKey) {
     }
 console.log(absents);
 console.log(retards);
-// }
+}
 function getStudentNameById(id) {
     const student = allStudents.find(s => s.id === id);
     return student ? student.name : "Unknown";

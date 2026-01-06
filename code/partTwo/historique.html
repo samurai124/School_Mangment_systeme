@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique - ENAA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;900&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --sidebar-width: 260px;
+            --bs-primary: #135bec;
+            --background-light: #f6f6f8;
+            --border-color: #e7ebf3;
+        }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: var(--background-light);
+            color: #0d121b;
+            margin: 0;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #1F1849;
+            color: white;
+            padding-top: 1.5rem;
+            z-index: 1000;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.7);
+            padding: 12px 20px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--bs-primary);
+        }
+
+        /* Main Content Adjustment */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        /* Calendar Styling */
+        .calendar-card {
+            background: white;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .calendar-day-label {
+            background: #f8f9fa;
+            padding: 12px 0;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: center;
+            color: #4c669a;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .calendar-cell {
+            min-height: 100px;
+            padding: 10px;
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+
+        .calendar-cell:hover {
+            background-color: #f8f9fa;
+        }
+
+        .calendar-cell.absent-unexcused {
+            border-left: 4px solid #dc3545;
+            background-color: rgba(220, 53, 69, 0.05);
+        }
+
+        .calendar-cell.absent-excused {
+            background-color: rgba(19, 91, 236, 0.1);
+            outline: 2px solid var(--bs-primary);
+            outline-offset: -2px;
+        }
+
+        /* Progress Circle */
+        .summary-circle {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: conic-gradient(#10b981 0% 66%, #ef4444 66% 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .summary-circle::after {
+            content: "";
+            position: absolute;
+            width: 125px;
+            height: 125px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .summary-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .bg-excused {
+            background-color: #10b981;
+        }
+
+        .bg-unexcused {
+            background-color: #ef4444;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="sidebar d-flex flex-column flex-shrink-0">
+        <div class="px-4 mb-4">
+            <h4 class="fw-bold text-primary mb-0">ENAA</h4>
+            <small class="text-white-50">Gestion des Absences</small>
+        </div>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link"><i class="bi bi-speedometer2"></i> Tableau de bord</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link"><i class="bi bi-person"></i> Mon Profil</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link"><i class="bi bi-bar-chart"></i> Statistiques</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link active"><i class="bi bi-clock-history"></i> Historique</a>
+            </li>
+        </ul>
+        <div class="px-4 pb-4 mt-auto">
+            <a href="#" class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center gap-2">
+                <i class="bi bi-box-arrow-left"></i> Déconnexion
+            </a>
+        </div>
+    </nav>
+
+    <main style="margin-left: var(--sidebar-width);">
+        <div class="container-fluid p-4 p-md-5">
+            <div class="row g-4">
+                
+                <div class="col-xl-9 col-lg-8">
+                    <div class="calendar-card shadow-sm">
+                        <div class="d-flex justify-content-between align-items-center p-4 border-bottom bg-white">
+                            <div class="d-flex align-items-center gap-3">
+                                <h2 id="date_container" class="h4 fw-bold mb-0">November 2023</h2>
+                                <div class="btn-group border rounded">
+                                    <button id="previous_months" class="btn btn-sm border-0">
+                                        <span class="material-symbols-outlined fs-6">chevron_left</span>
+                                    </button>
+                                    <button id="comming_months" class="btn btn-sm border-0">
+                                        <span class="material-symbols-outlined fs-6">chevron_right</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="d-none d-sm-flex gap-3">
+                                <small class="text-muted fw-medium"><span class="dot bg-excused me-1"></span> Excused</small>
+                                <small class="text-muted fw-medium"><span class="dot bg-unexcused me-1"></span> Unexcused</small>
+                            </div>
+                        </div>
+                        
+                        <div class="calendar-grid">
+                            <div class="calendar-day-label">Sun</div>
+                            <div class="calendar-day-label">Mon</div>
+                            <div class="calendar-day-label">Tue</div>
+                            <div class="calendar-day-label">Wed</div>
+                            <div class="calendar-day-label">Thu</div>
+                            <div class="calendar-day-label">Fri</div>
+                            <div class="calendar-day-label">Sat</div>
+                        </div>
+
+                        <div id="calendar_container" class="calendar-grid bg-white">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-4">
+                    <div id="info_card" class="sticky-top" style="top: 2rem; z-index: 10;">
+                        <div class="card border-0 rounded-4 shadow-sm overflow-hidden">
+                            <div class="p-4 bg-light border-bottom">
+                                <h3 class="fw-bold h5 mb-1">Select a Date</h3>
+                                <p class="text-muted small mb-0">Attendance details</p>
+                            </div>
+                            <div class="card-body p-4 text-center text-muted">
+                                <i class="bi bi-calendar-event fs-1 mb-3 d-block"></i>
+                                <p>Click on an absent or late day to see the full report here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="/code/partTwo/historique.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
